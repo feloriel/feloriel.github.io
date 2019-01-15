@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Quick start with DataTable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="lib/webix.css" type="text/css" charset="utf-8" />
+  </head>
+  <body>
+    <script src="lib/webix.js" type="text/javascript" charset="utf-8"></script>
+    <div id="box" style="width: 600px; height: 250px;"></div>
+    <script type="text/javascript" charset="utf-8">
+      dtable = new webix.ui({
+        view: 'datatable',
+        container: 'box',
+        columns: [
+          { id: 'title', header: 'Film title', fillspace: true },
+          { id: 'year', header: 'Year', width: 100 },
+          { id: 'votes', header: 'Votes', width: 100 }
+        ],
+        datatype: 'json',
+        data: [
+          { id: 1, title: 'The Shawshank Redemption', year: 1994, votes: 678790 },
+          { id: 2, title: 'The Godfather', year: 1972, votes: 511495 },
+          { id: 3, title: 'The Godfather: Part II', year: 1974, votes: 319352 },
+          { id: 4, title: 'Pulp fiction', year: 1994, votes: 533848 }
+        ]
+      });
+    </script>
+  </body>
+</html>
