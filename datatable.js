@@ -11,26 +11,35 @@ const datatable = webix.ui({
   columns: [
     {
       id: 'title',
-      header: 'Film title',
+      header: ['Film title', { content: 'textFilter' }],
       editor: 'text',
       width: 400,
-      footer: 'The total votes:'
+      footer: 'The total votes:',
+      sort: textLength
     },
     {
       id: 'year',
-      header: 'Year',
+      header: ['Year', { content: 'numberFilter' }],
       editor: 'inline-text',
       template: '<input type="text" value="#year#" style="width: 70px;">',
-      width: 150
+      width: 150,
+      sort: 'int'
     },
     {
       id: 'category',
-      header: 'Category',
+      header: ['Category', { content: 'selectFilter' }],
       width: 150,
       editor: 'select',
-      options: ['', 'Crime', 'Thriller']
+      options: ['', 'Crime', 'Thriller'],
+      sort: 'string'
     },
-    { id: 'votes', header: 'Votes', width: 150, footer: { content: 'summColumn' } }
+    {
+      id: 'votes',
+      header: ['Votes', { content: 'textFilter', compare: startCompare }],
+      width: 150,
+      footer: { content: 'summColumn' },
+      sort: 'int'
+    }
   ],
   datatype: 'json',
   data: [
@@ -46,3 +55,15 @@ const datatable = webix.ui({
     { id: 4, title: 'Pulp fiction', year: 1994, votes: 533848, category: 'Crime' }
   ]
 });
+
+function textLength(a, b) {
+  a = a.title.toString().length;
+  b = b.title.toString().length;
+  return a > b ? 1 : a < b ? -1 : 0;
+}
+
+function startCompare(value, filter) {
+  value = value.toString();
+  filter = filter.toString();
+  return value.indexOf(filter) === 0;
+}
