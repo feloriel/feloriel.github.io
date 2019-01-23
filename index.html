@@ -14,8 +14,9 @@
     <div class="content-container">
       <div id="introduction" class="hide"></div>
       <div id="datatable" class="hide">
-        <div id="pager_box1" class="hide"></div>
-        <div id="pager_box2" class="hide"></div>
+        <div id="pager_box1"></div>
+        <div id="webix-datatable"></div>
+        <div id="pager_box2"></div>
       </div>
     </div>
     <script src="lib/webix.js" type="text/javascript" charset="utf-8"></script>
@@ -31,21 +32,19 @@
         data: [
           { id: 1, value: 'Introduction', href: '#introduction' },
           { id: 2, value: 'DataTable', href: '#datatable' }
-        ]
-        // on: {
-        //   onMenuItemClick: function(id) {
-        //     if (document.getElementById) {
-        //       console.log(document.getElementById(id));
-        //       var divid = document.getElementById(id);
-        //       var divs = document.getElementsByClassName('hide');
-        //       for (var i = 0; i < divs.length; i++) {
-        //         divs[i].style.display = 'none';
-        //       }
-        //       divid.style.display = 'block';
-        //     }
-        //     return false;
-        //   }
-        // }
+        ],
+        // Переделать меню с использованием multiview
+        on: {
+          onMenuItemClick: function(id, event) {
+            const href = event.target.getAttribute('href');
+            const displayedBlock = document.querySelector(href);
+            const hiddenBlocks = document.getElementsByClassName('hide');
+            for (let i = 0; i < hiddenBlocks.length; i++) {
+              hiddenBlocks[i].style.display = 'none';
+            }
+            displayedBlock.style.display = 'block';
+          }
+        }
       });
     </script>
   </body>

@@ -1,12 +1,7 @@
-webix.i18n.pager = {
-  next: 'Next', // the next button
-  prev: 'Prev' // the previous button
-};
-
 const datatable = webix.ui({
   id: 'datatable',
   view: 'datatable',
-  container: 'datatable',
+  container: 'webix-datatable',
   autowidth: true,
   autoheight: true,
   select: 'row',
@@ -23,7 +18,7 @@ const datatable = webix.ui({
   },
   pager: {
     template: '{common.prev()} {common.pages()} {common.next()}',
-    size: 3,
+    size: 4,
     container: 'pager_box1'
   },
   columns: [
@@ -114,6 +109,18 @@ const datatable = webix.ui({
       link: 'https://www.imdb.com/title/tt0110912/?ref_=nv_sr_1'
     }
   ]
+});
+
+webix.i18n.pager = {
+  next: 'Next', // the next button
+  prev: 'Prev' // the previous button
+};
+
+datatable.getPager().clone({
+  template: '{common.prev()} {common.pages()} {common.next()}',
+  container: 'pager_box2',
+  size: 4,
+  group: 3
 });
 
 function textLength(a, b) {
