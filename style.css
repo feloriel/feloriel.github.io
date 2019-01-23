@@ -1,0 +1,44 @@
+#menu {
+  position: fixed;
+  width: 100%;
+}
+
+#introduction,
+#datatable {
+  padding-top: 50px;
+}
+
+/* #datatable {
+  display: none;
+} */
+
+.oddLines {
+  font-style: italic;
+}
+
+.detailsBtn {
+  cursor: pointer;
+  color: #1ca1c1;
+  border: 1px solid #f4f5f9;
+  border-bottom: 1px solid #e7e9f2;
+  font-size: 16px;
+  font-weight: 500;
+  background: #f4f5f9;
+  font-family: Roboto, sans-serif;
+  outline: none;
+  border-radius: 2px;
+  letter-spacing: 0px;
+  padding: 3px 6px;
+}
+
+.detailsBtn:hover {
+  background-color: #e7e9f2;
+}
+
+.detailsBtn:focus {
+  background-color: #e7e9f2;
+}
+
+.detailsBtn:active {
+  background-color: #daddeb;
+}

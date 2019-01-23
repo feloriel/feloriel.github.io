@@ -6,12 +6,18 @@
     <title>Webix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="lib/webix.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
   </head>
 
   <body>
-    <div id="menu" style="position: fixed; width: 100%;"></div>
-    <div id="introduction" style="padding-top: 50px;"></div>
-    <div id="datatable"></div>
+    <div id="menu"></div>
+    <div class="content-container">
+      <div id="introduction" class="hide"></div>
+      <div id="datatable" class="hide">
+        <div id="pager_box1" class="hide"></div>
+        <div id="pager_box2" class="hide"></div>
+      </div>
+    </div>
     <script src="lib/webix.js" type="text/javascript" charset="utf-8"></script>
     <script src="introduction.js" type="text/javascript" charset="utf-8"></script>
     <script src="datatable.js" type="text/javascript" charset="utf-8"></script>
@@ -23,9 +29,23 @@
           height: 40
         },
         data: [
-          { id: '1', value: 'Introduction', href: '#introduction' },
-          { id: '2', value: 'DataTable', href: '#datatable' }
+          { id: 1, value: 'Introduction', href: '#introduction' },
+          { id: 2, value: 'DataTable', href: '#datatable' }
         ]
+        // on: {
+        //   onMenuItemClick: function(id) {
+        //     if (document.getElementById) {
+        //       console.log(document.getElementById(id));
+        //       var divid = document.getElementById(id);
+        //       var divs = document.getElementsByClassName('hide');
+        //       for (var i = 0; i < divs.length; i++) {
+        //         divs[i].style.display = 'none';
+        //       }
+        //       divid.style.display = 'block';
+        //     }
+        //     return false;
+        //   }
+        // }
       });
     </script>
   </body>
