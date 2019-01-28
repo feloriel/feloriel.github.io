@@ -4,11 +4,13 @@
 }
 
 #introduction,
-#datatable {
+#datatable,
+#forms {
   padding-top: 50px;
 }
 
-#datatable {
+#datatable,
+#forms {
   display: none;
 }
 

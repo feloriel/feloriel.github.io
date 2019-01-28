@@ -7,6 +7,7 @@ const filmset = [
   { id: 6, title: '12 Angry Men', year: 1957 }
 ];
 const introduction = webix.ui({
+  id: 'introduction',
   type: 'line',
   container: 'introduction',
   rows: [

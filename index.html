@@ -18,10 +18,12 @@
         <div id="webix-datatable"></div>
         <div id="pager_box2"></div>
       </div>
+      <div id="forms" class="hide"></div>
     </div>
     <script src="lib/webix.js" type="text/javascript" charset="utf-8"></script>
     <script src="introduction.js" type="text/javascript" charset="utf-8"></script>
     <script src="datatable.js" type="text/javascript" charset="utf-8"></script>
+    <script src="forms.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
       webix.ui({
         container: 'menu',
@@ -31,7 +33,8 @@
         },
         data: [
           { id: 1, value: 'Introduction', href: '#introduction' },
-          { id: 2, value: 'DataTable', href: '#datatable' }
+          { id: 2, value: 'DataTable', href: '#datatable' },
+          { id: 3, value: 'Forms', href: '#forms' }
         ],
         // Переделать меню с использованием multiview
         on: {
