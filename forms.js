@@ -9,6 +9,15 @@ const fruit = [
 
 const gender = [{ id: 1, value: 'Female' }, { id: 2, value: 'Male' }, { id: 3, value: 'Other' }];
 
+const countries = [
+  { id: 1, value: 'Russia' },
+  { id: 2, value: 'Estonia' },
+  { id: 3, value: 'Colombia' },
+  { id: 4, value: 'Denmark' },
+  { id: 5, value: 'Germany' },
+  { id: 6, value: 'Moldova' }
+];
+
 const forms = webix.ui({
   view: 'layout',
   type: 'space',
@@ -120,7 +129,11 @@ const forms = webix.ui({
         {
           id: 'View4',
           view: 'form',
-          elements: []
+          elements: [
+            { view: 'text', label: 'Login' },
+            { view: 'text', type: 'password', label: 'Password' },
+            { view: 'text', suggest: 'mylist', label: 'Country', suggest: countries }
+          ]
         }
       ]
     }
