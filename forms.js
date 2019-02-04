@@ -132,7 +132,14 @@ const forms = webix.ui({
           elements: [
             { view: 'text', label: 'Login' },
             { view: 'text', type: 'password', label: 'Password' },
-            { view: 'text', suggest: 'mylist', label: 'Country', suggest: countries }
+            { view: 'text', suggest: 'mylist', label: 'Country', suggest: countries },
+            {
+              view: 'button',
+              type: 'iconButtonTop',
+              icon: 'wxi-download',
+              label: 'print',
+              height: 60
+            }
           ]
         }
       ]
