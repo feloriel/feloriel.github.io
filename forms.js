@@ -10,12 +10,12 @@ const fruit = [
 const gender = [{ id: 1, value: 'Female' }, { id: 2, value: 'Male' }, { id: 3, value: 'Other' }];
 
 const countries = [
-  { id: 1, value: 'Russia' },
-  { id: 2, value: 'Estonia' },
-  { id: 3, value: 'Colombia' },
-  { id: 4, value: 'Denmark' },
-  { id: 5, value: 'Germany' },
-  { id: 6, value: 'Moldova' }
+  { value: 'Russia' },
+  { value: 'Estonia' },
+  { value: 'Colombia' },
+  { value: 'Denmark' },
+  { value: 'Germany' },
+  { value: 'Moldova' }
 ];
 
 const forms = webix.ui({
@@ -52,7 +52,10 @@ const forms = webix.ui({
                 { view: 'checkbox', value: 1, width: 40 },
                 { view: 'checkbox', width: 40 },
                 { view: 'segmented', width: 300, options: ['First Segment', 'Second Segment'] }
-              ]
+              ],
+              elementsConfig: {
+                width: 680
+              }
             },
             {
               view: 'form',
@@ -67,6 +70,7 @@ const forms = webix.ui({
                 },
                 { view: 'combo', options: gender, label: 'Gender', labelAlign: 'left' },
                 {
+                  width: 680,
                   cols: [
                     {
                       view: 'counter',
@@ -105,7 +109,10 @@ const forms = webix.ui({
             { view: 'richselect', options: fruit, text: 'Kiwi', inputWidth: 150 },
             { view: 'radio', options: fruit, value: 2 },
             { view: 'counter', min: 1, max: 1000, value: 30, step: 10 }
-          ]
+          ],
+          elementsConfig: {
+            width: 680
+          }
         },
         {
           id: 'View3',
@@ -124,17 +131,39 @@ const forms = webix.ui({
             { type: 'section', template: 'Colorpickers' },
             { view: 'colorpicker' },
             { view: 'colorpicker', value: '#AC00AC' }
-          ]
+          ],
+          elementsConfig: {
+            width: 680
+          }
         },
         {
           id: 'View4',
           view: 'form',
           elements: [
-            { view: 'text', label: 'Login' },
-            { view: 'text', type: 'password', label: 'Password' },
-            { view: 'text', suggest: 'mylist', label: 'Country', suggest: countries },
+            { view: 'text', id: 'login', label: 'Login' },
+            {
+              width: 680,
+              cols: [
+                { view: 'text', id: 'password', type: 'password', label: 'Password' },
+                {
+                  view: 'toggle',
+                  id: 'showPswd',
+                  offLabel: 'Show password',
+                  onLabel: 'Hide password',
+                  width: 150
+                }
+              ]
+            },
+            {
+              view: 'combo',
+              id: 'country',
+              label: 'Country',
+              value: 'Russia',
+              options: countries
+            },
             {
               view: 'button',
+              id: 'printBtn',
               type: 'iconButtonTop',
               icon: 'wxi-download',
               label: 'print',
@@ -145,4 +174,28 @@ const forms = webix.ui({
       ]
     }
   ]
+});
+
+$$('showPswd').attachEvent('onItemClick', function() {
+  if (
+    $$('showPswd')
+      .getInputNode()
+      .getAttribute('aria-pressed') == 'true'
+  ) {
+    $$('password')
+      .getInputNode()
+      .setAttribute('type', 'text');
+  } else {
+    $$('password')
+      .getInputNode()
+      .setAttribute('type', 'password');
+  }
+});
+
+$$('country').attachEvent('onChange', function(newv, oldv) {
+  webix.message('Value changed from: ' + oldv + ' to: ' + newv);
+});
+
+$$('printBtn').attachEvent('onItemClick', function() {
+  alert('Printing...');
 });
